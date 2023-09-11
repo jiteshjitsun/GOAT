@@ -75,6 +75,7 @@ section {
 .section-header {
   text-align: center;
   padding-bottom: 60px;
+  padding-top: 10px;
 }
 
 .section-header h2 {
@@ -2670,4 +2671,16 @@ section {
 
 .footer .credits a {
   color: #fff;
+}
+
+#btnb {
+  color: #fff;
+  background-color: #008374;
+}
+
+.member-form, .member-search {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

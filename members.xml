@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<members>
+    <member>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+    </member>
+    <!-- Add more member entries as needed -->
+</members>
