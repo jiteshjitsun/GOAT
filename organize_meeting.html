@@ -105,8 +105,14 @@
             <div class="form-group">
                 <label for="meetingType">Meeting Type:</label>
                 <select class="form-control" id="meetingType" required>
-                    <option value="type1">Type 1</option>
-                    <option value="type2">Type 2</option>
+                    <option value="type1">Classroom Training</option>
+                    <option value="type2">Online Training</option>
+                    <option value="type2">Conference call</option>
+                    <option value="type2">Business</option>
+                    <option value="type2">Whiteboard and Projector</option>
+                    <option value="type2">Wifi and projector</option>
+                    <option value="type2">Conference call facility</option>
+                    <option value="type2">projector</option>
                     <!-- Add more options as needed -->
                 </select>
             </div>
@@ -120,16 +126,62 @@
   
             <div class="form-group">
                 <label for="meetingRoom">Select Meeting Room:</label>
-                <!-- Implement a UI to select a meeting room here -->
+                <select id="meetingRoom" class="form-control">
+                  <!-- Options will be added here dynamically with JavaScript -->
+                </select>
             </div>
             <div class="form-group">
                 <label for="managerCredits">Manager Credits:</label>
                 <input type="number" class="form-control" id="managerCredits" required>
             </div>
             <div class="form-group">
-                <label for="amenities">Amenities:</label>
-                <!-- Implement amenities selection based on meeting type here -->
+              <label class="form-label">Amenities Available</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="projector" value="200">
+                <label class="form-check-label" for="projector">
+                  <i class="bi bi-projector"></i> Projector
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="wifi" value="300">
+                <label class="form-check-label" for="wifi">
+                  <i class="bi bi-wifi"></i> Wi-Fi Connection 
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="conferenceCall" value="100">
+                <label class="form-check-label" for="conferenceCall">
+                  <i class="bi bi-telephone-fill"></i> Conference Call Facility 
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="whiteboard" value="100">
+                <label class="form-check-label d-flex align-items-center" for="whiteboard">
+                  <div style="width: 20px; height: 10px; background-color: white; border: 1px solid black;"></div>
+                  <span class="ms-2"><i class="bi bi-whiteboard"></i> Whiteboard </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="waterDispenser" value="300">
+                <label class="form-check-label" for="waterDispenser">
+                  <i class="bi bi-water"></i> Water Dispenser 
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="tv" value="500">
+                <label class="form-check-label" for="tv">
+                  <i class="bi bi-tv"></i> Television
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="coffeeMachine" value="500">
+                <label class="form-check-label d-flex align-items-center" for="coffeeMachine">
+                  <i class="bi bi-coffee"></i>☕ Coffee Machine 
+                </label>
+              </div>
             </div>
+            
+             
             <button type="button" class="btn" id="btnb" onclick="validateAndSaveMeeting()">Save</button>
             <button type="button" class="btn btn-secondary" onclick="cancelMeeting()">Cancel</button>
         </form>
@@ -156,6 +208,29 @@
                 name.insertData(name,email);
             }
         }
+
+      const roomsData = [
+        { id: 1, name: "Room A" },
+        { id: 2, name: "Room B" },
+        { id: 3, name: "Room C" },
+        { id: 4, name: "Room D" },
+      ];
+
+      // Function to populate the dropdown with room options
+        function populateRoomDropdown() {
+            const meetingRoomDropdown = document.getElementById("meetingRoom");
+
+            roomsData.forEach((room) => {
+                const option = document.createElement("option");
+                option.value = room.id; // You can set the value to room id if needed
+                option.text = room.name;
+                meetingRoomDropdown.appendChild(option);
+            });
+        }
+
+        // Call the function to populate the dropdown on page load
+        window.addEventListener("load", populateRoomDropdown);
+
 
         function validateAndSaveMeeting() {
 
@@ -304,6 +379,29 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- <div id="preloader"></div> -->
+
+  <!-- Bootstrap Prompt Modal -->
+<div class="modal fade" id="bootstrapPromptModal" tabindex="-1" role="dialog" aria-labelledby="bootstrapPromptModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bootstrapPromptModalLabel">Prompt Title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="bootstrapPromptMessage">Prompt message goes here.</p>
+        <input type="text" class="form-control" id="bootstrapPromptInput" style="display: none;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="bootstrapPromptSubmit">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
